@@ -11,6 +11,8 @@ class Rbm extends CI_Model {
             $this->_bean->import($import);
         }
         parent::__construct();
+        $user = R::findOne('user', 'username=?', array('s3v3n'));
+        var_dump($user);
     }
 
     public function getBean() {

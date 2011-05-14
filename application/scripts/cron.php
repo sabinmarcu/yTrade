@@ -1,28 +1,22 @@
 <?php
 
-include('../third_party/rb/rb.php');
+define('BASEPATH', '');
+define('APPPATH', dirname(dirname(__FILE__)));
+define('BASE_URL', 'https://query.yahooapis.com/v1/public/yql');
 
-$BASE_URL = 'https://query.yahooapis.com/v1/public/yql';
+include('../libraries/rb.php');
+new Rb(); // setup database
 
-$currencies = array(
-    'EUR',
-    'GBP',
-    'USD',
-    'CAD',
-    'AUD',
-    'XAU',
-    'RON',
-    'JPY',
-    'CHF',
-); // TODO: SELECT FROM DB
+
+$currencies = R::find('currency');
 
 $pairs = array();
 foreach ($currencies as $i) {
     foreach ($currencies as $j) {
-        if ($i == $j) {
+        if ($i->code == $j->code) {
             continue;
         }
-        $pairs[] = $i . $j;
+        $pairs[] = $i->code . $j->code;
     }
 }
 
@@ -41,13 +35,19 @@ foreach ($params as $key => $value) {
 
 $get = implode('&', $raw_params);
 
-$yql_query_url = $BASE_URL . '?' . $get;
+$yql_query_url = BASE_URL . '?' . $get;
 $json = file_get_contents($yql_query_url);
 $res = json_decode($json);
 
 if (!is_null($res->query->results)) {
     foreach ($res->query->results->rate as $row) {
-        echo $row->Name . ' is ' . $row->Rate;
-        echo "<br/>\n";
+        $rate = R::dispense('rate');
+        $rate->pair = $row->id;
+        $rate->date = $row->Date;
+        $rate->time = $row->Time;
+        $rate->rate = $row->Rate;
+        $rate->ask  = $row->Ask;
+        $rate->bid  = $row->Bid;
+        R::store($rate);
     }
 }
