@@ -41,4 +41,6 @@
             <li><a href='#' id='statistics'>Statistics</a></li>
         </ul>
         <div>
-    <article class='yui3-g' id='Dashboard'><section>
+    <article class='yui3-g' id='Dashboard'><section ><div id='chart' class='chart'></div>
+                
+        </section><section>

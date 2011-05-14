@@ -186,3 +186,7 @@ a:active, a:hover, a:focus{
     color: #f24;
     text-decoration: underline;
 }
+div.chart{
+    width: auto;
+    min-height: 400px;
+}
