@@ -8,7 +8,6 @@ define('BASE_URL', 'https://query.yahooapis.com/v1/public/yql');
 include('../libraries/rb.php');
 new Rb(); // setup database
 
-
 $currencies = R::find('currency');
 
 $pairs = array();

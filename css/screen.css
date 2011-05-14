@@ -1,0 +1,188 @@
+/* 
+    Document   : screen
+    Created on : 14.05.2011, 16:46:50
+    Author     : sabin
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+body{
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-size: 10pt;
+    font-weight: normal;
+    font-family: Lucida Grande, Lucida Sans Unicode, Ubuntu, Segoe UI, Helvetica Neue, Helvetica;
+    background: #2647A0;
+}
+header{
+    height: 100px;
+    max-height: 100px;
+    background: #fff;
+    overflow: hidden;
+}
+header section{
+    display: inline-block;
+    padding: 15px;
+}
+header section#logo, header section#user-account{
+    width: 300px;
+}
+header section#logo{
+    float: left;
+}
+header section#user-status{
+    padding: 0;
+    position: absolute;
+    left: 330px;
+    right: 330px;
+    top: 0;
+    padding: 12px 5px 5px;
+    z-index: 99999;
+    background: url('../images/currencies.png') repeat-x top center #2647a0;
+    display: block;
+    text-align: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #fff;
+    -webkit-box-shadow: 0 0 5px #222;
+}
+section#user-status ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    font-size: 11pt;
+}
+section#user-status:hover ul#currencies{
+    display: block;
+}
+section#user-status li{
+    display: block;
+    clear: both;
+    overflow: hidden;
+    padding: 0 10px 13px;
+    border-bottom: dashed 1px rgba(256, 256, 256, 0.4);
+}
+section#user-status span.type{
+    float:left;
+}
+section#user-status span.ammount{
+    float:right;
+}
+section#user-status ul#currencies{
+    font-weight: normal;
+    display: none;
+}
+section#user-status div.dropdown{
+    padding: 5px 0;
+    margin: 5px 0 0 ;
+    background: url('../images/btn.png') repeat-x top center;
+    border-radius: 5px;
+    border: solid 1px #00217A;
+    color: rgba(256, 256, 256, 0.7);
+}
+header section#user-account{
+    float: right;
+    padding: 10px 15px;
+}
+.dashboard ul{
+    display: block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    background: #fff;
+}
+.dashboard ul li{
+    display: inline-block;
+    width: 25%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    font-size: 12pt;
+    text-align: center;
+}
+ .dashboard ul li a, .dashboard  ul li a:visited{
+    display: block !important;
+    padding: 10px 0;
+    margin: 0 5px;
+    border-radius: 5px;
+    background: url('../images/nav.png') repeat-x bottom center;
+    color: rgba(256, 256, 256, 0.7);
+    text-decoration: none;
+    outline: none !important;
+    margin-bottom: 3px;
+}
+.dashboard ul li.yui3-tab-selected a,.dashboard  ul li.yui3-tab-selected a:visited{    
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: 0;
+    padding-bottom: 13px;
+}
+ .dashboard ul li a:hover,.dashboard  ul li a:active, .dashboard ul li a:focus{
+    color: #fff;
+}
+article{
+    display: block;
+    border: none;
+    margin: 0;
+    padding: 20px 15px;
+    overflow: hidden;
+    display: none;
+}
+article.current{
+    display: block;
+}
+article section{
+    background: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+}
+footer{
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    height: 30px;
+    max-height: 30px;
+    padding: 3px 5px;
+    -webkit-box-shadow: 0 0 15px #444;
+    background: #ddd;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eee), color-stop(1, #ddd)) ;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+footer section{
+    display: inline-block;
+    padding: 0 10px;
+    min-width: 50px;
+    max-width: 250px;
+    height: 30px;
+    max-height: 30px;
+    font-size: 8pt;
+    line-height: 13px;
+    vertical-align: bottom;
+}
+footer section#credits{
+    float: left;
+}
+footer section#about{
+    float: right;
+    text-align: rightl
+}
+a, a:visited{
+    color: #24F;
+    text-decoration: none;
+}
+a:active, a:hover, a:focus{
+    color: #f24;
+    text-decoration: underline;
+}
