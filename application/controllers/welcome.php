@@ -10,7 +10,7 @@ class Welcome extends CI_Controller {
         $user->username = 's3v3n';
         $user->hash = md5('asdf1234');
         R::store($user);
-        $this->load->view('welcome', array());
+        $this->load->view('welcome_message', array());
     }
 
 }

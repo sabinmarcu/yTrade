@@ -10,7 +10,7 @@
 |
 */
 
-$hook['pre_controller'] = array(
+$hook['post_controller_constructor'] = array(
                                 'class'    => 'Auth',
                                 'function' => 'check',
                                 'filename' => 'auth.php',
