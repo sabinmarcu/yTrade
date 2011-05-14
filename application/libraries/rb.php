@@ -2,9 +2,7 @@
 
 class Rb {
 
-    function __construct()
-    {
-        return;
+    function __construct() {
         // Include database configuration
         include(APPPATH.'/config/database.php');
 

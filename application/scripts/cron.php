@@ -3,6 +3,7 @@
 include('../third_party/rb/rb.php');
 
 $BASE_URL = 'https://query.yahooapis.com/v1/public/yql';
+
 $currencies = array(
     'EUR',
     'GBP',
@@ -46,7 +47,7 @@ $res = json_decode($json);
 
 if (!is_null($res->query->results)) {
     foreach ($res->query->results->rate as $row) {
-        echo $row->Name.' is '.$row->Rate;
+        echo $row->Name . ' is ' . $row->Rate;
         echo "<br/>\n";
     }
 }
