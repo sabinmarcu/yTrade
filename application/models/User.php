@@ -4,6 +4,3 @@
  * @param int id
  * @param string hash
  */
-    
-
-}

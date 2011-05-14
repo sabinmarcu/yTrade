@@ -1,14 +1,14 @@
 MYSQL TABLES
 ============
 
-users
-openids
-users_openids_link     -- e mai sugestiv decat accounts
+user
+openid
 
-bids
-rates
-currencies
-accounts
+bid
+rate
+currency
+account -- associative table. links users and their openids.
+funds
 
 top - cache
 
