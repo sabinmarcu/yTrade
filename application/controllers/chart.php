@@ -16,7 +16,7 @@ class chart extends CI_Controller {
                 'time'=>date('h:iA',$now),
                 'rate'=>mt_rand(1,1000)/1000,
             );
-            $now-=$interval;
+            $now+=$interval;
         }
         
         echo json_encode($r);
