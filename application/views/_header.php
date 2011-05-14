@@ -41,7 +41,4 @@
             <li><a href='#' id='statistics'>Statistics</a></li>
         </ul>
         <div>
-    <article class='yui3-g' id='Dashboard'><section>Such a lovely place ...</section></article>
-    <article class='yui3-g' id='bavailable'><section>Such a lovely place ...</section></article>
-    <article class='yui3-g' id='bmine'><section>E ca un sicriu !</section></article>
-    <article class='yui3-g' id='statistics'>
+    <article class='yui3-g' id='Dashboard'><section>

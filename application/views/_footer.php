@@ -1,4 +1,7 @@
-</article></div>
+</section></article>
+    <article class='yui3-g' id='bavailable'><section>Such a lovely place ...</section></article>
+    <article class='yui3-g' id='bmine'><section>Such a lovely place ...</section></article>
+    <article class='yui3-g' id='statistics'><section>E ca un sicriu !</section></article></div>
 </div>
     <footer>
         <section id='credits'>
