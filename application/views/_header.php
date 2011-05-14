@@ -1,0 +1,47 @@
+
+<?php $this -> load -> helper('url'); ?>
+<!DOCTYPE html>
+<head>
+    <title>yTrade | <?php echo isset($title) ? $title : "Home" ?></title>
+    <link href='<?php echo base_url() ?>css/screen.css' rel='stylesheet' media="screen" />
+    <script type='text/javascript' src='<?php echo base_url() ?>js/yui-min.js'></script>
+    <script type='text/javascript' src='<?php echo base_url() ?>js/local.js'></script>
+</head>
+<body>
+    <header>
+        <section id='logo'>  
+            <a href='/'>
+                   <img src='<?php echo base_url() ?>images/logo.png' />
+            </a>
+        </section>
+        <section id='user-status'>
+                <ul id='main'><li><span class='type'>GOLD</span><span class='ammount'>300</span></li></ul>
+                <ul id='currencies'>
+                    <li><span class='type'>GBP</span><span class='ammount'>150</span></li>
+                    <li><span class='type'>AUD</span><span class='ammount'>50</span></li>                
+                    <li><span class='type'>USD</span><span class='ammount'>25</span></li>
+                    <li><span class='type'>RON</span><span class='ammount'>35</span></li>
+                    <li><span class='type'>CHF</span><span class='ammount'>125</span></li>
+                </ul>
+                <div class='dropdown'>\/ \/ \/ \/</div>
+        </section>
+        <section id='user-account'>
+            <ul>
+               <li>Welcome back, <b>Username</b></li>
+               <li><a href='#'>Logout</a></li>
+                <li><a href='#'>Settings</a></li>
+            </ul>
+        </section>
+    </header>
+    <div class='dashboard'>
+        <ul>
+            <li><a href='#' id='dashboard'>Dashboard</a></li>
+            <li><a href='#' id='bavailable'>Current Auctions</a></li>
+            <li><a href='#' id='bmine'>My Auctions</a></li>
+            <li><a href='#' id='statistics'>Statistics</a></li>
+        </ul>
+        <div>
+    <article class='yui3-g' id='Dashboard'><section>Such a lovely place ...</section></article>
+    <article class='yui3-g' id='bavailable'><section>Such a lovely place ...</section></article>
+    <article class='yui3-g' id='bmine'><section>E ca un sicriu !</section></article>
+    <article class='yui3-g' id='statistics'>
