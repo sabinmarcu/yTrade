@@ -1,7 +1,9 @@
 <?php
-
-class M_user extends RedbeanModel {
-    
+/**
+ * @param string name
+ * @param int id
+ * @param string hash
+ */
     
 
 }
