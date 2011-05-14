@@ -41,6 +41,11 @@ $res = json_decode($json);
 
 if (!is_null($res->query->results)) {
     foreach ($res->query->results->rate as $row) {
+        $prev = R::findOne('rate', 'pair=? and date=? and time=?', array($row->id, $row->Date, $row->Time));
+        if(!empty($prev)){
+            // no update since last query
+            continue;
+        }
         $rate = R::dispense('rate');
         $rate->pair = $row->id;
         $rate->date = $row->Date;
