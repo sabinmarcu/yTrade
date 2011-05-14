@@ -12,7 +12,10 @@ class chart extends CI_Controller {
         $now = time()-($interval*$max);
         $r = array();
         for ($i=0;$i<$max;$i++) {
-            $r[date('h:iA',$now)]=mt_rand(1,1000)/100;
+            $r[]=array(
+                'time'=>date('h:iA',$now),
+                'rate'=>mt_rand(1,1000)/1000,
+            );
             $now-=$interval;
         }
         
