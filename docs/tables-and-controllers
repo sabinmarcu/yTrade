@@ -1,0 +1,38 @@
+MYSQL TABLES
+============
+
+user
+openid
+
+bid
+rate
+currency
+account -- associative table. links users and their openids.
+funds
+
+top - cache
+
+
+
+CONTROLLERS
+===========
+
+user
+	index - see my profie
+	settings - change things in my profile
+	view - view someone's profile
+	link - add a new linked profile
+	login
+	logout
+
+bids
+	index - see active bids
+	my - see my active bids
+	history - see my inactive bids
+	put - put a bid
+	cancel - cancel a bid
+	accept - accept a bid
+	
+top
+	index - see top 100
+	? place - see my place in the top
