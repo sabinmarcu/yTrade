@@ -1,6 +1,6 @@
 <?php
 
-class User_model extends RedbeanModel {
+class M_user extends RedbeanModel {
     
     
 
