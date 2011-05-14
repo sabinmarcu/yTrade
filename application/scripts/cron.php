@@ -1,6 +1,5 @@
 #!/usr/bin/php
 <?php
-
 define('BASEPATH', '');
 define('APPPATH', dirname(dirname(__FILE__)));
 define('BASE_URL', 'https://query.yahooapis.com/v1/public/yql');
@@ -41,18 +40,18 @@ $res = json_decode($json);
 
 if (!is_null($res->query->results)) {
     foreach ($res->query->results->rate as $row) {
-        $prev = R::findOne('rate', 'pair=? and date=? and time=?', array($row->id, $row->Date, $row->Time));
-        if(!empty($prev)){
+        $timestamp = strtotime($row->Date . ' ' . $row->Time);
+        $prev = R::findOne('rate', 'timestamp=? and pair=?', array($timestamp, $row->id));
+        if (!empty($prev)) {
             // no update since last query
             continue;
         }
         $rate = R::dispense('rate');
         $rate->pair = $row->id;
-        $rate->date = $row->Date;
-        $rate->time = $row->Time;
+        $rate->timestamp = $timestamp;
         $rate->rate = $row->Rate;
-        $rate->ask  = $row->Ask;
-        $rate->bid  = $row->Bid;
+        $rate->ask = $row->Ask;
+        $rate->bid = $row->Bid;
         R::store($rate);
     }
 }
