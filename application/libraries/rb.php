@@ -4,6 +4,7 @@ class Rb {
 
     function __construct()
     {
+        return;
         // Include database configuration
         include(APPPATH.'/config/database.php');
 
