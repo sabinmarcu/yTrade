@@ -4,15 +4,15 @@ class Rbm extends CI_Model {
 
     protected $_bean, $_table;
 
-    public function __construct($import = null) {
-        $class = $this->_table = substr(get_class($this), 2);
+    public function __construct($import=null) {
+        $class = $this->_table = $this->getTableName();
         $this->_bean = R::dispense($class);
         if ($import) {
             $this->_bean->import($import);
         }
         parent::__construct();
     }
-
+    
     public function getBean() {
         return $this->_bean;
     }
@@ -22,6 +22,10 @@ class Rbm extends CI_Model {
             return R::store($this->_bean);
         }
         return null;
+    }
+    
+    public function getTableName() {
+        return substr(get_class($this), 2);
     }
 
 }
