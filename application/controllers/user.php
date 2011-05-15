@@ -105,11 +105,7 @@ class User extends CI_Controller {
         redirect('/user/login');
     }
 
-<<<<<<< HEAD
-    public function updateGold () {
-=======
     protected function updateGold() {
->>>>>>> 5f3b27f3131ba9c96d73d5bbb0d941e4976e0e9a
         $this->load->helper('getgold');
         $this->load->helper('exchange');
         $userid = $this->session->userdata('userid');
