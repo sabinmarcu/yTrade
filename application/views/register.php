@@ -1,3 +1,5 @@
+<?php include '_header.php' ?>
+<section>
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
 
 <?php if(isset($error)): ?>
@@ -16,3 +18,5 @@ Repeat password:<br/>
 <?php echo form_submit(array('name' => 'submit', 'value'=> 'register')); ?><br/>
 <?php echo form_close(); ?>
 
+</section>
+<?php include '_footer.php' ?>

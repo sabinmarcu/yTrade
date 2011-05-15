@@ -194,10 +194,32 @@ a:active, a:hover, a:focus{
 div.chart{
     width: auto;
     min-height: 400px;
+    padding: 0;
 }
 article#dashboard{
     font-size: 0;
 }
-article#dashboard *{
+article#dashboard > *{
     font-size: 10pt;
+}
+.success > *{
+    background: #88dd44;
+    color: #fff;
+    text-shadow: 0 1px 1px #888;
+}
+.fail > *, .error {
+    background: #f76;
+    color: #fff;
+    text-shadow: 0 1px 1px #888;
+}
+.canceled > *{
+    background: #aaa;
+}
+.chart-wrapper{
+    background-image: url('../images/loading.gif');
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.chart{
+    background-image: #fff;
 }

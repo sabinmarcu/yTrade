@@ -1,8 +1,9 @@
 <?php include "_header.php" ?> 
-<section class="yui3-u-h">
-<h4>Welcome to yTrade!</h4>
+<section class="">
+<h1>Welcome to yTrade!</h1>
 </section>
-<section class='yui3-u-h-1-2'>
+<section class=''>
+  <p> Under construnktion ...</p>
 </section>
 
  <?php include "_footer.php" ?>

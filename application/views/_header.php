@@ -16,7 +16,7 @@
             </a>
         </section>
         <section id='user-status'>
-                <ul id='main'><li><span class='type'>GOLD</span><span class='ammount'>300</span></li></ul>
+                <ul id='main'><li><span class='type'>FUNDS</span><span class='ammount'>1</span></li></ul>
                 <ul id='currencies'>
                     <li><span class='type'>GBP</span><span class='ammount'>150</span></li>
                     <li><span class='type'>AUD</span><span class='ammount'>50</span></li>                
@@ -37,12 +37,9 @@
     <div class='dashboard'>
         <ul>
             <li><a href='#' id='dashboard'>Dashboard</a></li>
-            <li><a href='#' id='bavailable'>Current Bids</a></li>
-            <li><a href='#' id='bmine'>My Bids</a></li>
+            <li><a href='#' id='bavailable'>Current Sales</a></li>
+            <li><a href='#' id='bmine'>My Transactions</a></li>
             <li><a href='#' id='statistics'>Statistics</a></li>
         </ul>
         <div>
     <article id='dashboard'>
-        <div id='dashboard-content'></div>
-        
-        <section>
