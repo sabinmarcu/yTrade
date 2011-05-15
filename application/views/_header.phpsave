@@ -16,7 +16,7 @@
             </a>
         </section>
         <section id='user-status'>
-                <ul id='main'><li><span class='type'>GOLD</span><span class='ammount'>300</span></li></ul>
+                <ul id='main'><li><span class='type'>CAPITAL</span><span class='ammount'>300</span></li></ul>
                 <ul id='currencies'>
                     <li><span class='type'>GBP</span><span class='ammount'>150</span></li>
                     <li><span class='type'>AUD</span><span class='ammount'>50</span></li>                
@@ -24,12 +24,12 @@
                     <li><span class='type'>RON</span><span class='ammount'>35</span></li>
                     <li><span class='type'>CHF</span><span class='ammount'>125</span></li>
                 </ul>
-                <div class='dropdown'>Hover for more information.</div>
+                <div class='dropdown'>Hover for more details.</div>
         </section>
         <section id='user-account'>
             <ul>
-               <li>Hi, <b><?php echo $this->session->userdata('username'); ?></b></li>
-               <li><?php echo anchor('/user/logout', 'Logout') ?></li>
+               <li>Welcome back, <b>Username</b></li>
+               <li><a href='#'>Logout</a></li>
                 <li><a href='#'>Settings</a></li>
             </ul>
         </section>
@@ -37,8 +37,8 @@
     <div class='dashboard'>
         <ul>
             <li><a href='#' id='dashboard'>Dashboard</a></li>
-            <li><a href='#' id='bavailable'>Current Bids</a></li>
-            <li><a href='#' id='bmine'>My Bids</a></li>
+            <li><a href='#' id='bavailable'>Current Auctions</a></li>
+            <li><a href='#' id='bmine'>My Auctions</a></li>
             <li><a href='#' id='statistics'>Statistics</a></li>
         </ul>
         <div>

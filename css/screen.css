@@ -141,13 +141,14 @@ article.current{
     display: block;
 }
 article section{
-    background: #fff;
-    border-radius: 5px;
 }
-article section > *{    
+article section > *{  
+    margin: 10px;
     padding: 15px;
     display: block
     position: relative;
+    background: #fff;
+    border-radius: 5px;
 }
 footer{
     display: block;
@@ -199,12 +200,4 @@ article#dashboard{
 }
 article#dashboard *{
     font-size: 10pt;
-}
-.yui3-u-1-2{
-    width: 46% !important;
-    margin: 10px 2% !important;
-}
-.yui3-u-1-3{
-    width: 29% !important;
-    margin: 10px 2% !important;
 }

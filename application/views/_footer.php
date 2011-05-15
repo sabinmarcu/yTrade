@@ -1,7 +1,7 @@
 </section></article>
-    <article class='' id='bavailable'><section>Such a lovely place ...</section></article>
-    <article class='' id='bmine'><section>Such a lovely place ...</section></article>
-    <article class='' id='statistics'><section>E ca un sicriu !</section></article></div>
+    <article class='' id='bavailable'><section><p>Such a lovely place ...</p></section></article>
+    <article class='' id='bmine'><section><p>Such a lovely place ...</p></section></article>
+    <article class='' id='statistics'><section><p>E ca un sicriu !</p></section></article></div>
 </div>
     <footer>
         <section id='credits'>
