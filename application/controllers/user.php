@@ -25,9 +25,7 @@ class User extends CI_Controller {
 
             $hash = hash("sha256", $password);
             $user = R::findOne(
-                            'user',
-                            'username=? and hash=?',
-                            array($username, $hash)
+                            'user', 'username=? and hash=?', array($username, $hash)
             );
 
             if ($user == false) {
@@ -39,8 +37,7 @@ class User extends CI_Controller {
             $this->session->set_userdata('userid', $user->id);
             redirect('welcome');
         } catch (Exception $error) {
-            $this->load->view('login.php',
-                    array('error' => $error->getMessage())
+            $this->load->view('login.php', array('error' => $error->getMessage())
             );
         }
     }
@@ -48,8 +45,8 @@ class User extends CI_Controller {
     public function register() {
         $currencies = R::find('currency');
         $push = array();
-        foreach($currencies as $c){
-            $push[$c->id] = $c->code .'('.$c->name.')';
+        foreach ($currencies as $c) {
+            $push[$c->id] = $c->code . '(' . $c->name . ')';
         }
         $this->load->view('register', array('currencies' => $push));
     }
@@ -107,19 +104,31 @@ class User extends CI_Controller {
         $this->session->sess_destroy();
         redirect('/user/login');
     }
-    
-    public function updateGold () {
+
+    protected function updateGold() {
         $this->load->helper('getgold');
         $this->load->helper('exchange');
         $userid = $this->session->userdata('userid');
         $gold = getgold($userid);
         $user = R::load('user', $userid);
-        $user->gold=$gold;
+        $user->gold = $gold;
         if (R::store($user)) {
-            echo json_encode(array($gold));
-        } else {
-            echo json_encode(array('error'));
+            return $gold;
         }
+        return false;
+    }
+
+    public function status() {
+        $moneys = R::find('account', 'userid=?', array($this->session->userdata('userid')));
+        if (!$moneys)
+            echo json_encode(array('error'=>'You have no money'));
+        $r = array();
+        foreach ($moneys as $cur) {
+            $moneda = R::findOne('currency', 'id=?', array($cur->currency));
+            $r[$moneda->code] = $cur->amount;
+        }
+        $r['gold'] = $this->updateGold();
+        echo json_encode($r);
     }
 
 }
