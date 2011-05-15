@@ -81,9 +81,7 @@ class User extends CI_Controller {
             $this->session->set_userdata('username', $username);
             redirect('welcome');
         } catch (Exception $error) {
-            $this->load->view('register.php',
-                    array('error' => $error->getMessage())
-            );
+            $this->load->view('register.php', array('error' => $error->getMessage()));
         }
     }
 
