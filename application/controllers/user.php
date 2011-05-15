@@ -107,7 +107,7 @@ class User extends CI_Controller {
         $this->session->sess_destroy();
         redirect('/user/login');
     }
-    
+
     public function updateGold () {
         $this->load->helper('getgold');
         $this->load->helper('exchange');

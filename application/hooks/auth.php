@@ -18,8 +18,10 @@ class Auth {
                 && $this->CI->router->class != 'user'
                 && $this->CI->router->method != 'login'
                 && $this->CI->router->method != 'loginPost'
+                && $this->CI->router->method != 'register'
+                && $this->CI->router->method != 'registerPost'
         ) {
-            redirect('/user/login', "refresh");
+            redirect('/user/login', "location");
         }
     }
 

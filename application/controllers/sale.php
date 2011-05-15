@@ -7,9 +7,39 @@ class Sale extends CI_Controller {
 
     public function index() {
 
-        $q = "SELECT * FROM (SELECT * FROM sale WHERE userid != ? AND status = ? ) as sales RIGHT JOIN user on user.id = sale.userid";
-        $r = R::getAll($q, array($this->session->userdata('userid'), self::OPEN));
-        var_dump($r);
+
+        $sales = R::find('sale', 'userid != ?', array($this->session->userdata('userid')));
+        $users = R::find('user');
+
+        $usernames = array();
+        foreach($users as $user){
+            $usernames[$user->id] = $user->username;
+        }
+
+        $rates = R::getAll('select distinct pair, ask, id from rate');
+        $rrates = array();
+        foreach(){
+            
+        }
+
+        $show = array();
+        foreach($sales as $sale){
+            if($sale->userid != $this->session->userdata('userid')){
+                $show[] = array(
+                    'id' => $sale->id,
+                    'sell' => $sale->sell,
+                    'buy' => $sale->buy,
+                    'username' => $usernames[$sale->userid],
+                    'amount' => $sale->qty,
+                    'to_pay' => ( $sale->qty)
+                );
+            }
+        }
+
+        var_dump($show);
+
+//        $q = "SELECT * FROM (SELECT * FROM sale WHERE userid != ? AND status = ? ) as sales RIGHT JOIN user on user.id = sale.userid";
+//        $r = R::getAll($q, array($this->session->userdata('userid'), self::OPEN));
     }
 
     public function create() {
@@ -127,13 +157,12 @@ class Sale extends CI_Controller {
                         array($sale->userid, $sell_currency_id)
         );
 
-        if(!$seller_account){
+        if (!$seller_account) {
             $seller_account = R::dispense('account');
             $seller_account->userid = $sale->userid;
             $seller_account->currency = $sell_currency_id;
             $seller_account->amount = $to_receive;
-        }
-        else{
+        } else {
             $seller_account->amount = $seller_account->amount + $to_receive;
         }
 
