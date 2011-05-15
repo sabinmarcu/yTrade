@@ -91,7 +91,7 @@ class chart extends CI_Controller {
                 
                 $return[] = array(
                     'time' => date('d-m-Y h:iA'),
-                    'rate' => $lastRate,
+                    'rate' => isset($lastRate) ? $lastRate : $first['rate'],
                 );
                 
             }
