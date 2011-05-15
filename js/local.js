@@ -1,5 +1,5 @@
 YUI().use("yui", "tabview", "charts", 'io', "json-parse", function(Y) {
-    var tabview = new Y.TabView({srcNode:'.dashboard'});tabview.render();    Y.JSON.useNativeParse = false;
+    var tabview = new Y.TabView({srcNode:'.dashboard'});tabview.render(); 
     
     startinp = {
             1 : [
@@ -25,21 +25,24 @@ YUI().use("yui", "tabview", "charts", 'io', "json-parse", function(Y) {
     start = new Array();
     
     start[1] = new Array();
-    start[1]["ago"] = 60*60*40;
+    start[1]["ago"] = 60*60*2;
     start[1]["div"] = 10;
     start[1]["cur"] = "EURCHF";
     
     start[2] = new Array();
-    start[2]["ago"] = 60*60*50;
+    start[2]["ago"] = 60*60*5;
     start[2]["div"] = 15;
     start[2]["cur"] = "RONEUR";
     
     start[3] = new Array();
-    start[3]["ago"] = 60*60*60;
+    start[3]["ago"] = 60*60*4;
     start[3]["div"] = 5;
     start[3]["cur"] = "GBPUSD";
     
-    chartcount = 3;
+    start[4] = new Array();
+    start[4]["ago"] = 60*60*8;
+    start[4]["div"] = 2;
+    start[4]["cur"] = "EURUSD";
     
     
     dcauc = new Array();
@@ -58,7 +61,7 @@ YUI().use("yui", "tabview", "charts", 'io', "json-parse", function(Y) {
     
     currentTab = null;
     
-    sync = function()   {        
+    sync = function()   {    
                 switch (currentTab) {
                     case 'dashboard' :  Y.one("#dashboard-content").empty();  getDashboard(); break;
                     case 'bavailable' : break;
@@ -71,26 +74,40 @@ YUI().use("yui", "tabview", "charts", 'io', "json-parse", function(Y) {
     Y.all(".dashboard a").each( function(elem) {
         elem.on("click", function(e) {
         e.preventDefault();
-        currentTab = elem.get('id');
-        sync();
+        if (currentTab != elem.get('id'))   {
+            currentTab = elem.get('id');
+            sync();            
+        }
         })
     })
 
     getDashboard = function()   {
         uri = "/index.php/chart/index?";   
-        for(i = 1; i <= chartcount; i++)    {
-            Y.one("#dashboard-content").append("<section class='yui3-u-1-3'><div id='chart" + i + "' class='chart'></div></section>");
-            if (i > 1) uri = uri + '&';
-            uri = uri+"start["+i+"][ago]="+start[i]['ago']+"&start["+i+"][cur]="+start[i]['cur']+"&start["+i+"][div]="+start[i]['div'];
+        for(i = 1; i <= start.length - 1; i++)    {
+           
+                Y.one("#dashboard-content").append("<section class=''><div class='chart-wrapper'><div id='chart" + i + "' class='chart'></div></div></section>");
+                 if (i > 1) uri = uri + '&';
+                 uri = uri+"start["+i+"][ago]="+start[i]['ago']+"&start["+i+"][cur]="+start[i]['cur']+"&start["+i+"][div]="+start[i]['div'];
         }            
+        
         Y.on('io:complete', dashComplete, Y); 
+        Y.on('io:failure', ajaxFail, Y); 
         request = Y.io(uri);    
         function dashComplete(id, o, args) { 
+            headers = o.getAllResponseHeaders();
+            if (headers.indexOf("refresh: 0") > 0) return false;
             var charts = new Array();
-            for (i = 1; i <= chartcount; i++)   {
-                charts[i] = new Y.Chart({dataProvider:o.responseText[i], render:".chart#chart"+i, categoryKey:"time"});
+           response = Y.JSON.parse(o.responseText) ;
+            for (i = 1; i <= start.length-1; i++)   { 
+            charts[i] = new Y.Chart({dataProvider:response[i], render:".chart#chart"+i, categoryKey:"time"});
             }
         }
+        function ajaxFail(id, o, args)  {
+            alert(o.status);
+        }
     }
+    
+    
+    
     
 });

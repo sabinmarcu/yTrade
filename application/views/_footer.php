@@ -1,7 +1,10 @@
-</section></article>
-    <article class='' id='bavailable'><section><p>Such a lovely place ...</p></section></article>
-    <article class='' id='bmine'><section><p>Such a lovely place ...</p></section></article>
-    <article class='' id='statistics'><section><p>E ca un sicriu !</p></section></article></div>
+
+        <div id='dashboard-content'></div>
+        
+        <section></section></article>
+    <article class='' id='bavailable'><section class='success'><p>Under construnktion ...</p></section></article>
+    <article class='' id='bmine'><section class='fail'><p>Under construnktion ...</p></section></article>
+    <article class='' id='statistics'><section class='canceled'><p>Under construnktion ...</p></section></article></div>
 </div>
     <footer>
         <section id='credits'>
