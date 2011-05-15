@@ -16,7 +16,7 @@
             </a>
         </section>
         <section id='user-status'>
-                <ul id='main'><li><span class='type'>GOLD</span><span class='ammount'>300</span></li></ul>
+                <ul id='main'><li><span class='type'>CREDITS</span><span class='ammount'>300</span></li></ul>
                 <ul id='currencies'>
                     <li><span class='type'>GBP</span><span class='ammount'>150</span></li>
                     <li><span class='type'>AUD</span><span class='ammount'>50</span></li>                
