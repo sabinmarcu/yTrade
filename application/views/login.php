@@ -16,8 +16,5 @@ Password:<br/>
 <?php echo form_submit(array('name' => 'submit', 'value'=> 'login')); ?><br/>
 <?php echo form_close(); ?>
 </div>
-<p>
-    Don't have an account? Create one <?php echo anchor('/user/register', 'here'); ?>!
-</p>
 </section>
 <?php include '_footer.php' ?>
