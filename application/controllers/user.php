@@ -52,6 +52,7 @@ class User extends CI_Controller {
     }
 
     public function registerPost() {
+        die('x');
 
         try {
 
@@ -96,7 +97,17 @@ class User extends CI_Controller {
             $this->session->set_userdata('userid', $id);
             redirect('welcome');
         } catch (Exception $error) {
-            $this->load->view('register.php', array('error' => $error->getMessage()));
+            $currencies = R::find('currency');
+            $push = array();
+            foreach ($currencies as $c) {
+                $push[$c->id] = $c->code . '(' . $c->name . ')';
+            }
+            var_dump($push);
+            die();
+            $this->load->view('register', array(
+                'currencies' => $push,
+                'error' => $error->getMessage()
+            ));
         }
     }
 
@@ -121,7 +132,7 @@ class User extends CI_Controller {
     public function status() {
         $moneys = R::find('account', 'userid=?', array($this->session->userdata('userid')));
         if (!$moneys)
-            echo json_encode(array('error'=>'You have no money'));
+            echo json_encode(array('error' => 'You have no money'));
         $r = array();
         foreach ($moneys as $cur) {
             $moneda = R::findOne('currency', 'id=?', array($cur->currency));
