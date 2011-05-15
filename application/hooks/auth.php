@@ -1,4 +1,7 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); 
+<?php
+
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
 
 class Auth {
 
@@ -15,11 +18,7 @@ class Auth {
                 && $this->CI->router->method != 'login'
                 && $this->CI->router->method != 'loginPost'
         ) {
-<<<<<<< HEAD
-            redirect('/user/login', 'refresh');
-=======
             redirect('/user/login', "refresh");
->>>>>>> e18485b8dca5bf6938b4f2ca0037d34c8c61d877
         }
     }
 
