@@ -15,7 +15,7 @@ class Auth {
                 && $this->CI->router->method != 'login'
                 && $this->CI->router->method != 'loginPost'
         ) {
-            redirect('/user/login');
+            redirect('/user/login', 'location', 301);
         }
     }
 
