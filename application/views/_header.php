@@ -4,6 +4,7 @@
 <head>
     <title>yTrade | <?php echo isset($title) ? $title : "Home" ?></title>
     <link href='<?php echo base_url() ?>css/screen.css' rel='stylesheet' media="screen" />
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssgrids/grids-min.css">
     <script type='text/javascript' src='<?php echo base_url() ?>js/yui-min.js'></script>
     <script type='text/javascript' src='<?php echo base_url() ?>js/local.js'></script>
 </head>
@@ -27,8 +28,8 @@
         </section>
         <section id='user-account'>
             <ul>
-               <li>Welcome back, <b>Username</b></li>
-               <li><a href='#'>Logout</a></li>
+               <li>Hi, <b><?php echo $this->session->userdata('username'); ?></b></li>
+               <li><?php echo anchor('/user/logout', 'Logout') ?></li>
                 <li><a href='#'>Settings</a></li>
             </ul>
         </section>
@@ -41,4 +42,7 @@
             <li><a href='#' id='statistics'>Statistics</a></li>
         </ul>
         <div>
-    <article class='yui3-g' id='Dashboard'><section>
+    <article id='dashboard'>
+        <div id='dashboard-content'></div>
+        
+        <section>
