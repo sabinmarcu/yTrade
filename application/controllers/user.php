@@ -46,7 +46,12 @@ class User extends CI_Controller {
     }
 
     public function register() {
-        $this->load->view('register');
+        $currencies = R::find('currency');
+        $push = array();
+        foreach($currencies as $c){
+            $push[$c->id] = $c->code .'('.$c->name.')';
+        }
+        $this->load->view('register', array('currencies' => $push));
     }
 
     public function registerPost() {
@@ -56,6 +61,7 @@ class User extends CI_Controller {
             $username = $this->input->post('username');
             $password = $this->input->post('password');
             $password2 = $this->input->post('password2');
+            $currency = $this->input->post('currency');
 
             // check that fields are present
             if (in_array(null, array($username, $password, $password2))) {
