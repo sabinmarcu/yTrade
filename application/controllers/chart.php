@@ -24,7 +24,7 @@ class chart extends CI_Controller {
                 die(json_encode(array('error')));
             }
                  
-            $return[$chart] = $this->_calculate($options);
+            $return['chart'.$chart] = $this->_calculate($options);
             //var_dump($return[$chart]);
         }
 //        echo "merge";
