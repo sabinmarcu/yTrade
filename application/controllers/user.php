@@ -101,5 +101,19 @@ class User extends CI_Controller {
         $this->session->sess_destroy();
         redirect('/user/login');
     }
+    
+    public function updateGold () {
+        $this->load->helper('getgold');
+        $this->load->helper('exchange');
+        $userid = $this->session->userdata('userid');
+        $gold = getgold($userid);
+        $user = R::load('user', $userid);
+        $user->gold=$gold;
+        if (R::store($user)) {
+            echo json_encode(array($gold));
+        } else {
+            echo json_encode(array('error'));
+        }
+    }
 
 }
