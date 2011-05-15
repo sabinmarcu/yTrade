@@ -36,6 +36,7 @@ class User extends CI_Controller {
 
             $this->session->set_userdata('logged_in', 1);
             $this->session->set_userdata('username', $user->username);
+            $this->session->set_userdata('userid', $user->id);
             redirect('welcome');
         } catch (Exception $error) {
             $this->load->view('login.php',
@@ -75,10 +76,21 @@ class User extends CI_Controller {
             $new_user = R::dispense('user');
             $new_user->username = $username;
             $new_user->hash = hash("sha256", $password);
-            R::store($new_user);
+            $id = R::store($new_user);
+
+            // get XAU id (gold)
+            $xau = R::findOne('currency', 'code = ?', array('XAU'));
+            $xau_id = $xau->id;
+
+            $account = R::dispense('account');
+            $account->userid = $id;
+            $account->currency = $xau_id;
+            $account->amount = 1;
+            R::store($account);
 
             $this->session->set_userdata('logged_in', 1);
             $this->session->set_userdata('username', $username);
+            $this->session->set_userdata('userid', $id);
             redirect('welcome');
         } catch (Exception $error) {
             $this->load->view('register.php', array('error' => $error->getMessage()));
