@@ -7,8 +7,9 @@ class Sale extends CI_Controller {
 
     public function index() {
 
-        $q = "SELECT * FROM (SELECT * FROM sale WHERE userid != ? AND status = ? ) as  RIGHT JOIN user on user.id = sale.userid";
-        $r = R::getAll($q, array($this->session->userid, self::OPEN));
+        $q = "SELECT * FROM (SELECT * FROM sale WHERE userid != ? AND status = ? ) as sales RIGHT JOIN user on user.id = sale.userid";
+        $r = R::getAll($q, array($this->session->userdata('userid'), self::OPEN));
+        var_dump($r);
     }
 
     public function create() {
@@ -37,7 +38,7 @@ class Sale extends CI_Controller {
                     $currency_id
                 ));
 
-        if (!$account || $account->qty < $input['qty']) {
+        if (!$account || $account->amount < $input['qty']) {
             echo json_encode(array('error' => 'Insufficient funds'));
             return;
         }
