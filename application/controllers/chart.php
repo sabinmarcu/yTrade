@@ -81,9 +81,13 @@ class chart extends CI_Controller {
                     if (empty($rates)) break;
                 }
                 
+                if (isset($first['rate']) && !empty($first['rate'])) {
+                    $lastRate = $first['rate'];
+                }
+                
                 $return[] = array(
                     'time' => date('d-m-Y h:iA'),
-                    'rate' => $first['rate']
+                    'rate' => $lastRate,
                 );
                 
             }
