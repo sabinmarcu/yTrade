@@ -12,34 +12,31 @@ class Sale extends CI_Controller {
         $users = R::find('user');
 
         $usernames = array();
-        foreach($users as $user){
+        foreach ($users as $user) {
             $usernames[$user->id] = $user->username;
         }
 
         $rates = R::getAll('select distinct pair, ask, id from rate');
-        $rrates = array();
-        foreach(){
-            
+        $asks = array();
+        foreach ($rates as $rate) {
+            $asks[$rate['pair']] = $rate['ask'];
         }
 
         $show = array();
-        foreach($sales as $sale){
-            if($sale->userid != $this->session->userdata('userid')){
+        foreach ($sales as $sale) {
+            if ($sale->userid != $this->session->userdata('userid')) {
                 $show[] = array(
                     'id' => $sale->id,
                     'sell' => $sale->sell,
                     'buy' => $sale->buy,
                     'username' => $usernames[$sale->userid],
                     'amount' => $sale->qty,
-                    'to_pay' => ( $sale->qty)
+                    'to_pay' => ($asks[$sale->sell . $sale->buy] * $sale->qty)
                 );
             }
         }
 
-        var_dump($show);
-
-//        $q = "SELECT * FROM (SELECT * FROM sale WHERE userid != ? AND status = ? ) as sales RIGHT JOIN user on user.id = sale.userid";
-//        $r = R::getAll($q, array($this->session->userdata('userid'), self::OPEN));
+        echo json_encode($show);
     }
 
     public function create() {
