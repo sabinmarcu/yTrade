@@ -65,6 +65,10 @@ class chart extends CI_Controller {
             $rates = array(reset($beans));
         }
         $rates = array_merge($rates, $beans);
+        if (empty($rates)) {
+            echo json_encode(array('error'=>'No data.'));
+            die();
+        }
         //var_dump($rates); die();
         if (!empty($rates)) {
             $return = array();
