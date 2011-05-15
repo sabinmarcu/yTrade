@@ -164,6 +164,7 @@ class Sale extends CI_Controller {
         }
 
         R::store($seller_account);
+        echo json_encode(array('error' => '0'));
     }
 
     public function cancel() {
