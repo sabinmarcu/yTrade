@@ -65,7 +65,7 @@ YUI().use("yui", "tabview", "charts", 'io', "json-parse", function(Y) {
                     case 'bmine' : break;
                     case 'statistics' : break;
                 }
-          setTimeout('sync()', 36000);
+          setTimeout('sync()', 360000);
     }
     
     Y.all(".dashboard a").each( function(elem) {
@@ -88,7 +88,7 @@ YUI().use("yui", "tabview", "charts", 'io', "json-parse", function(Y) {
         function dashComplete(id, o, args) { 
             var charts = new Array();
             for (i = 1; i <= chartcount; i++)   {
-                charts[i] = new Y.Chart({dataProvider:startinp[i], render:".chart#chart"+i, categoryKey:"time"});
+                charts[i] = new Y.Chart({dataProvider:o.responseText[i], render:".chart#chart"+i, categoryKey:"time"});
             }
         }
     }
