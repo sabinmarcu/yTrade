@@ -20,10 +20,15 @@ class Rbm extends CI_Model {
     }
 
     public function save() {
-        if ($this->_bean) {
-            return R::store($this->_bean);
+        if ($this->beforeSave()) {
+            if ($this->_bean) {
+                return R::store($this->_bean);
+            }
         }
         return null;
+    }
+    protected function beforeSave () {
+        return true;
     }
     
     public function getTableName() {
