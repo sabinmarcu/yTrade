@@ -1,15 +1,18 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
 
-include "_header.php";
+<?php if(isset($error)): ?>
+<p class="error"><?php echo $error; ?></p>
+<?php endif; ?>
 
-echo form_open('/user/loginPost');
+<?php echo form_open('/user/loginPost'); ?>
 
-echo 'username:';
-echo form_input(array('name' => 'username'));
-echo '<br/>password:';
-echo form_password(array('name' => 'password'));
-echo form_submit(array('name' => 'submit', 'value'=> 'login'));
+Username:<br/>
+<?php echo form_input(array('name' => 'username')); ?><br/>
+Password:<br/>
+<?php echo form_password(array('name' => 'password')); ?><br/>
+<?php echo form_submit(array('name' => 'submit', 'value'=> 'login')); ?><br/>
+<?php echo form_close(); ?>
 
-echo form_close();
-
-include "_footer.php";
+<p>
+    Don't have an account? Create one <?php echo anchor('/user/register', 'here'); ?>!
+</p>

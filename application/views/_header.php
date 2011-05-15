@@ -28,8 +28,8 @@
         </section>
         <section id='user-account'>
             <ul>
-               <li>Welcome back, <b>Username</b></li>
-               <li><a href='#'>Logout</a></li>
+               <li>Hi, <b><?php echo $this->session->userdata('username'); ?></b></li>
+               <li><?php echo anchor('/user/logout', 'Logout') ?></li>
                 <li><a href='#'>Settings</a></li>
             </ul>
         </section>
